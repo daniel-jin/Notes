@@ -1,1 +1,11 @@
-# Notes
+- Basic Model View Controller architecture
+- The role and use of `UIViewController`
+- The role and use of `UINavigationController`
+- Use of `IBOutlet`s
+- Use of `IBAction`s
+- Implementation of `UITableViewDataSource` and `UITableViewDelegate`
+- Creation of custom model classes
+- Data persistence using `UserDefaults`
+- Conversion of custom model objects to dictionaries and vice versa
+- Basic model controller design and implementation
+- Use of the singleton/shared instance design pattern
