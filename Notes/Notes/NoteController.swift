@@ -46,6 +46,14 @@ class NoteController {
         
     }
     
+    // Update
+    func updateNote(note: Note, text: String) {
+        
+        note.text = text
+        
+        saveToPersistantStore()
+    }
+    
     
     
     func loadFromPersistantStore() {

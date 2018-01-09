@@ -13,19 +13,31 @@
         <!--Notes-->
         <scene sceneID="crV-x1-PLT">
             <objects>
-                <tableViewController id="Lng-Yv-z9G" sceneMemberID="viewController">
+                <tableViewController id="Lng-Yv-z9G" customClass="NotesListTableViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hWt-jI-ZX4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="a3w-f7-Ox4">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" textLabel="ZM9-Yf-MLj" style="IBUITableViewCellStyleDefault" id="a3w-f7-Ox4">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a3w-f7-Ox4" id="WX1-mt-teH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZM9-Yf-MLj">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Kez-LV-das" kind="show" identifier="toNoteDetail" id="Y04-oR-xAj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,7 +48,8 @@
                     <navigationItem key="navigationItem" title="Notes" id="58H-bc-AbH">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MIw-Bk-Hee">
                             <connections>
-                                <segue destination="Kez-LV-das" kind="show" id="Pzo-ba-V7b"/>
+                                <action selector="addButtonTapped:" destination="Lng-Yv-z9G" id="Xjn-OU-joH"/>
+                                <segue destination="Kez-LV-das" kind="show" identifier="toNewNote" id="Pzo-ba-V7b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -45,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="804" y="-128.18590704647679"/>
         </scene>
-        <!--View Controller-->
+        <!--Note Detail View Controller-->
         <scene sceneID="VLt-iH-UMa">
             <objects>
-                <viewController id="Kez-LV-das" sceneMemberID="viewController">
+                <viewController id="Kez-LV-das" customClass="NoteDetailViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gKZ-pq-0Q8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,8 +83,15 @@
                         <viewLayoutGuide key="safeArea" id="lrr-FU-FmO"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZcX-UN-u4P">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="giS-KW-RDi"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="giS-KW-RDi">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="Kez-LV-das" id="kYb-FI-5R9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="noteTextView" destination="qg7-Bv-Ffm" id="Yiv-Kz-lqz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osA-dZ-6nK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,4 +116,7 @@
             <point key="canvasLocation" x="129" y="-128"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y04-oR-xAj"/>
+    </inferredMetricsTieBreakers>
 </document>
